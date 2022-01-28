@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<style>
+    iframe.note-fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100vh !important;
+        z-index: 4000;
+    }
+</style>
+<div class="container">
+    <div class="row justify-content-center my-3">
+        <div class="col-6 card border shadow">
+            <h4>Create Post</h4>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_title">Title</label>
+                <input class="form-control" type="text" name="title" value="{{form.title.value}}"  maxlength="150" required id="id_title">
+                <label for="id_image">Image</label>
+                <input class="form-control" type="file" name="image" accept="image/*" required id="id_image">
+                <img src="{{form.image.value.url}}"  alt="{{form.title.value}}"> <br>
+                <label for="id_tags">Tags</label>
+                <input class="form-control" type="text" value="{{form.tags.value}}" name="tags" maxlength="200" id="id_tags">
+                <label for="id_body">Body</label>
+                <textarea name="body" cols="40" rows="10" id="id_body" hidden="true">{{form.tags.value}}</textarea>
+                <script>
+                    var settings_id_body = { "width": '100%', "height": 480, "lang": "en-US", "toolbar": [["style", ["style"]], ["font", ["bold", "italic", "underline", "superscript", "subscript", "strikethrough", "clear"]], ["fontname", ["fontname"]], ["fontsize", ["fontsize"]], ["color", ["color"]], ["para", ["ul", "ol", "paragraph"]], ["height", ["height"]], ["table", ["table"]], ["insert", ["link", "picture", "video", "hr"]], ["view", ["fullscreen", "codeview"]], ["help", ["help"]]], "url": { "language": "/static/summernote/lang/summernote-en-US.min.js", "upload_attachment": "/summernote/upload_attachment/" } };
+                </script>
+                <div class="summernote-div" cols="40" rows="10" width="100%" height="480">
+                    <iframe id="id_body_iframe" src="/summernote/editor/id_body/" frameborder="0" width="100%" height="480"></iframe>
+                </div>
+                <input class="btn-info btn mb-2 text-white w-75" type="submit" value="Create">
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+<nav class="py-2 bg-light border-bottom">
+    <div class="container d-flex flex-wrap">
+      <ul class="nav me-auto">
+        <li class="nav-item"><a href="/" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="/contact" class="nav-link link-dark px-2">Contact</a></li>
+        <li class="nav-item"><a href="/privecy-policy" class="nav-link link-dark px-2">Privecy Policy</a></li>
+        <li class="nav-item"><a href="/about" class="nav-link link-dark px-2">About</a></li>
+      </ul>
+      {% if user.is_authenticated %}
+      <ul class="nav">
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none " id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="true">
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2" style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(-120px, 34px);" data-popper-placement="bottom-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+            <li><a class="dropdown-item" href="/create-post">New Post</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="/admin/logout/">Sign out</a></li>
+          </ul>
+        </div>
+      </ul>
+      {% endif %}
+    </div>
+  </nav>
+  <header class="py-3 mb-4 border-bottom">
+    <div class="container d-flex flex-wrap justify-content-center">
+      <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
+        <span class="fs-4">GoolBool</span>
+      </a>
+      <form class="col-12 col-lg-auto mb-3 mb-lg-0">
+        <input type="search..." class="form-control" placeholder="Search..." aria-label="Search">
+      </form>
+    </div>
+  </header>
